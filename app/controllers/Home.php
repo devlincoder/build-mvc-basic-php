@@ -1,20 +1,17 @@
 <?php
-class Home
+class Home extends Controller
 {
+    public $model_home;
+
+    public function __construct(){
+        $this->model_home = $this->model("HomeModel");
+        var_dump($this->model_home);
+    }
+
     public function index()
     {
-        echo "Home Page";
-    }
+        $data = $this->model_home->getList();
 
-    public function detail($id = "", $slug = "")
-    {
-        echo "Id san pham" . $id;
-        echo "Slug san pham" . $slug;
-    }
-
-    public function search()
-    {
-        $keyword = $_GET["keyword"];
-        echo "Ket qua tim kiem" . $keyword;
+        print_r($data);
     }
 }
